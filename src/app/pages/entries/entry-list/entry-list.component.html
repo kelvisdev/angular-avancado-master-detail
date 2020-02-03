@@ -34,12 +34,12 @@
   <tbody>
     <tr *ngFor="let entry of entries">
       <td>
-        <strong>{{ entry.name }}</strong>
+        <strong>{{ entry.name }}</strong><br>
         <small class="text-success">{{ entry.date }}</small><br>
         <small *ngIf="entry.description"> {{ entry.description}} </small>
       </td>
       <td>
-        {{entry.category.name}}
+        {{entry.category.name}} - <pre> {{ entry | json }} </pre>
       </td>
       <td class="text-right">
         <strong [class.text-success]="entry.type == 'revenue'" [class.text-danger]="entry.type == 'expense'">
