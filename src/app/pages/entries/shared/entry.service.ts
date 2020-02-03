@@ -1,3 +1,4 @@
+import { CategoryService } from './../../categories/shared/category.service';
 import { element } from 'protractor';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -15,7 +16,7 @@ export class EntryService {
 
   private apiPath = 'api/entries';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private categoryService: CategoryService) { }
 
 
   getAll(): Observable<Entry[]> {
@@ -35,18 +36,33 @@ export class EntryService {
   }
 
   create(entry: Entry): Observable<Entry> {
-    return this.http.post(this.apiPath, entry).pipe(
-      catchError(this.handleError),
-      map(this.jsonDataToEntry)
+    // entry.categoryId // 1 => moradia
+    // entry.category // null
+
+    return this.categoryService.getById(entry.categoryId).pipe(
+      flatMap(category => {
+        entry.category = category;
+
+        return this.http.post(this.apiPath, entry).pipe(
+          catchError(this.handleError),
+          map(this.jsonDataToEntry)
+        );
+      })
     );
   }
 
   updated(entry: Entry): Observable<Entry> {
     const url = `${this.apiPath}/${entry.id}`;
 
-    return this.http.put('sadad', entry).pipe(
-      catchError(this.handleError),
-      map(() => entry)
+    return this.categoryService.getById(entry.categoryId).pipe(
+      flatMap(category => {
+        entry.category = category;
+
+        return this.http.put(url, entry).pipe(
+          catchError(this.handleError),
+          map(() => entry)
+        );
+      })
     );
   }
 
