@@ -44,7 +44,7 @@ export class EntryService extends BaseResourceService<Entry> {
     const entries: Entry[] = [];
 
     jsonData.forEach(e => {
-      const entry = Object.assign(new Entry(), e);
+      const entry = Entry.fromJson(element);
       entries.push(entry);
     });
 
@@ -52,7 +52,7 @@ export class EntryService extends BaseResourceService<Entry> {
   }
 
   protected jsonDataToResource(jsonData: any): Entry {
-    return jsonData as Entry;
+    return Entry.fromJson(jsonData);
   }
 
 }
