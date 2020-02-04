@@ -1,7 +1,7 @@
 import { element } from 'protractor';
-import { EntryService } from './../shared/entry.service';
 import { Component, OnInit } from '@angular/core';
 import { Entry } from '../shared/entry.model';
+import { EntryService } from '../shared/entry.service';
 
 @Component({
   selector: 'app-entry-list',
