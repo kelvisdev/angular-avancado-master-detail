@@ -13,7 +13,7 @@ import { Category } from '../shared/category.model';
   templateUrl: './category-form.component.html',
   styleUrls: ['./category-form.component.css']
 })
-export class CategoryFormComponent implements OnInit {
+export class CategoryFormComponent implements OnInit, AfterContentChecked {
 
   currentAction: string; // new | edit
   categoryForm: FormGroup;
