@@ -1,9 +1,7 @@
 import { CategoryService } from './../../categories/shared/category.service';
-import { element } from 'protractor';
 import { Injectable, Injector } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { map, catchError, flatMap  } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { flatMap  } from 'rxjs/operators';
 import { BaseResourceService } from '../../../shared/services/base-resource.service';
 
 import { Entry } from './entry.model';
@@ -14,7 +12,7 @@ import { Entry } from './entry.model';
 
 export class EntryService extends BaseResourceService<Entry> {
   constructor(protected injector: Injector, private categoryService: CategoryService) {
-    super('api/entries', injector);
+    super('api/entries', injector, Entry.fromJson);
   }
 
 
@@ -44,7 +42,7 @@ export class EntryService extends BaseResourceService<Entry> {
     const entries: Entry[] = [];
 
     jsonData.forEach(e => {
-      const entry = Entry.fromJson(element);
+      const entry = Entry.fromJson(e);
       entries.push(entry);
     });
 

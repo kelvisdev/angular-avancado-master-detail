@@ -1,4 +1,3 @@
-import { element } from 'protractor';
 import { Component, OnInit } from '@angular/core';
 import { Entry } from '../shared/entry.model';
 import { EntryService } from '../shared/entry.service';
