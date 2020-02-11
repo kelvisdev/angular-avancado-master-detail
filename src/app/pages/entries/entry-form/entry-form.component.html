@@ -23,7 +23,11 @@
             <option *ngFor="let option of typeOptions" [value]="option.value">{{ option.text }}</option>
           </select>
 
-          <div
+          <app-form-field-error
+            [form-control]="resourceForm.get('type')">
+          </app-form-field-error>
+
+          <!-- <div
             class="text-danger"
             *ngIf="
               resourceForm.get('type').invalid && resourceForm.get('type').touched
@@ -32,7 +36,7 @@
             <div *ngIf="resourceForm.get('type').errors.required">
               Dado Obrigatório
             </div>
-          </div>
+          </div> -->
         </div>
 
         <!-- NAME -->
@@ -45,19 +49,19 @@
             formControlName="name"
           />
 
-          <div
-            class="text-danger"
-            *ngIf="
-              resourceForm.get('name').invalid && resourceForm.get('name').touched
-            "
-          >
+          <app-form-field-error
+            [form-control]="resourceForm.get('name')">
+          </app-form-field-error>
+
+          <!-- <div *ngIf="resourceForm.get('name').invalid && resourceForm.get('name').touched"
+            class="text-danger">
             <div *ngIf="resourceForm.get('name').errors.required">
               Dado Obrigatório
             </div>
             <div *ngIf="resourceForm.get('name').errors.minlength">
               Deve ter no mínimo 2 caracteres
             </div>
-          </div>
+          </div> -->
         </div>
 
         <!-- AMOUNT -->
