@@ -10,6 +10,8 @@ export class PageHeaderComponent implements OnInit {
   // tslint:disable-next-line: no-input-rename
   @Input('page-title') pageTitle: string;
   // tslint:disable-next-line: no-input-rename
+  @Input('show-button') showButton: boolean = true;
+  // tslint:disable-next-line: no-input-rename
   @Input('button-class') buttonClass: string;
   // tslint:disable-next-line: no-input-rename
   @Input('button-text') buttonText: string;
