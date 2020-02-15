@@ -23,6 +23,7 @@ import { ServerErrorMessagesComponent } from './components/server-error-messages
     // shared modules
     CommonModule,
     ReactiveFormsModule,
+    RouterModule,
     // shared components
     BreadCrumbComponent,
     PageHeaderComponent,
